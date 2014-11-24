@@ -36,13 +36,22 @@ QtModbus::QtModbus(QWidget *parent) :
   } else {
     qDebug() << "Write FAILED\n";
     //      goto close;
+    endModbus();
+    qApp->exit(-1);
   }
+}
+
+void QtModbus::endModbus()
+{
+  qDebug() << "Closing connection";
+  modbus_close(ctx); // Close the connection
+  modbus_free(ctx);
 }
 
 QtModbus::~QtModbus()
 {
+  qDebug() << "Destruct";
+  endModbus();
   delete ui;
-
-  modbus_close(ctx); // Close the connection
-  modbus_free(ctx);
 }
+
