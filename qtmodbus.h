@@ -22,7 +22,7 @@ public:
 private:
     Ui::QtModbus *ui;
 
-    void endModbus(void);
+    void exitModbus(void);
     modbus_t *ctx;	//modbus connection
     int rc;			//modbus call return value
 };

@@ -14,11 +14,11 @@ TEMPLATE = app
 
 
 # Winsock libs
-win32:LIBS += -lWS2_32
+#win32:LIBS += -lWS2_32
 
 # Modbus dll location
-#win32:LIBS += "H:\QtPrograms\QtModbus\libmodbus-5.dll"
-win32:LIBS += "G:/QtGit/QtModbus/dll/libmodbus-5.dll"
+win32:LIBS += "H:/GitHub/QtModbus/dll/libmodbus-5.dll"
+#win32:LIBS += "G:/QtGit/QtModbus/dll/libmodbus-5.dll"
 
 SOURCES += main.cpp\
         qtmodbus.cpp

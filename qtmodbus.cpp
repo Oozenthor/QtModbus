@@ -7,7 +7,9 @@ QtModbus::QtModbus(QWidget *parent) :
 {
   ui->setupUi(this);
 
-  qDebug() << "Start";
+//  QLibrary modLib("../libmodbus-5");
+
+  qDebug() << "Start";// << modLib.isLoaded();
 
   ctx = modbus_new_tcp("127.0.0.1", 502);
 
@@ -35,13 +37,11 @@ QtModbus::QtModbus(QWidget *parent) :
     qDebug() << "Address 0x%X, value %d written\n" << modbus_address << modbus_value;
   } else {
     qDebug() << "Write FAILED\n";
-    //      goto close;
-    endModbus();
     qApp->exit(-1);
   }
 }
 
-void QtModbus::endModbus()
+void QtModbus::exitModbus()
 {
   qDebug() << "Closing connection";
   modbus_close(ctx); // Close the connection
@@ -50,8 +50,8 @@ void QtModbus::endModbus()
 
 QtModbus::~QtModbus()
 {
-  qDebug() << "Destruct";
-  endModbus();
+  qDebug() << "Exiting";
+  exitModbus();
   delete ui;
 }
 
