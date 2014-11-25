@@ -1,11 +1,9 @@
 #ifndef QTMODBUS_H
 #define QTMODBUS_H
 
-#include <stdint.h>
 #include <QDebug>
 #include <QMainWindow>
-#include <QLibrary>
-#include "libMb/modbus.h"
+#include "zlibmodbus.h"
 
 namespace Ui {
 class QtModbus;
@@ -19,12 +17,15 @@ public:
     explicit QtModbus(QWidget *parent = 0);
     ~QtModbus();
 
+private slots:
+    void on_writeButton_clicked();
+    void on_readButton_clicked();
+    void on_connectButton_clicked();
+
 private:
     Ui::QtModbus *ui;
 
-    void exitModbus(void);
-    modbus_t *ctx;	//modbus connection
-    int rc;			//modbus call return value
+    ZLibModbus mb;  //libModbus wrapper
 };
 
 #endif // QTMODBUS_H

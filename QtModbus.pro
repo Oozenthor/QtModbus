@@ -21,7 +21,8 @@ win32:LIBS += "H:/GitHub/QtModbus/dll/libmodbus-5.dll"
 #win32:LIBS += "G:/QtGit/QtModbus/dll/libmodbus-5.dll"
 
 SOURCES += main.cpp\
-        qtmodbus.cpp
+        qtmodbus.cpp \
+    zlibmodbus.cpp
 
 HEADERS  += qtmodbus.h \
     libMb/config.h \
@@ -31,7 +32,8 @@ HEADERS  += qtmodbus.h \
     libMb/modbus-rtu-private.h \
     libMb/modbus-tcp.h \
     libMb/modbus-tcp-private.h \
-    libMb/modbus-version.h
+    libMb/modbus-version.h \
+    zlibmodbus.h
 
 FORMS    += qtmodbus.ui
 
